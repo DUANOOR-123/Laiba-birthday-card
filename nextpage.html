@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Laiba!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&family=Pacifico&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #E6E6FA, #98FB98, #E6E6FA, #AFEEEE);
+            background-size: 400% 400%;
+            animation: gradientFlow 8s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Floating bubbles */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(230, 230, 250, 0.6), rgba(152, 251, 152, 0.6));
+            animation: floatUp 6s infinite ease-in-out;
+        }
+
+        .bubble:nth-child(1) {
+            width: 40px;
+            height: 40px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 30px;
+            height: 30px;
+            left: 50%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                bottom: -100px;
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+            }
+        }
+
+        .main-container {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(221, 160, 221, 0.3), rgba(175, 238, 238, 0.3));
+            padding: 50px 40px;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 45px rgba(221, 160, 221, 0.2);
+            max-width: 600px;
+            margin: 20px;
+            position: relative;
+            animation: gentleBounce 3s ease-in-out infinite;
+        }
+
+        @keyframes gentleBounce {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .birthday-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 48px;
+            color: #8A2BE2;
+            text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            animation: colorShift 4s ease-in-out infinite;
+        }
+
+        @keyframes colorShift {
+
+            0%,
+            100% {
+                color: #8A2BE2;
+            }
+
+            50% {
+                color: #20B2AA;
+            }
+        }
+
+        .birthday-message {
+            font-size: 24px;
+            font-weight: 400;
+            color: #4B0082;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
+        }
+
+        .special-wish {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2E8B57;
+            background: linear-gradient(45deg, rgba(230, 230, 250, 0.4), rgba(152, 251, 152, 0.4));
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border: 2px dashed rgba(139, 69, 19, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        /* Decorative elements */
+        .decoration {
+            position: absolute;
+            font-size: 35px;
+            animation: rotate 4s linear infinite;
+        }
+
+        .decoration:nth-child(1) {
+            top: -15px;
+            left: -15px;
+            animation-delay: 0s;
+        }
+
+        .decoration:nth-child(2) {
+            top: -15px;
+            right: -15px;
+            animation-delay: 1s;
+        }
+
+        .decoration:nth-child(3) {
+            bottom: -15px;
+            left: -15px;
+            animation-delay: 2s;
+        }
+
+        .decoration:nth-child(4) {
+            bottom: -15px;
+            right: -15px;
+            animation-delay: 3s;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Confetti effect */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #DA70D6;
+            animation: confettiFall 3s linear infinite;
+        }
+
+        .confetti:nth-child(odd) {
+            background: #7FFFD4;
+        }
+
+        .confetti:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .confetti:nth-child(2) {
+            left: 20%;
+            animation-delay: 0.2s;
+        }
+
+        .confetti:nth-child(3) {
+            left: 30%;
+            animation-delay: 0.4s;
+        }
+
+        .confetti:nth-child(4) {
+            left: 40%;
+            animation-delay: 0.6s;
+        }
+
+        .confetti:nth-child(5) {
+            left: 60%;
+            animation-delay: 0.8s;
+        }
+
+        .confetti:nth-child(6) {
+            left: 70%;
+            animation-delay: 1s;
+        }
+
+        .confetti:nth-child(7) {
+            left: 80%;
+            animation-delay: 1.2s;
+        }
+
+        .confetti:nth-child(8) {
+            left: 90%;
+            animation-delay: 1.4s;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                top: -10px;
+                opacity: 1;
+                transform: rotate(0deg);
+            }
+
+            100% {
+                top: 100vh;
+                opacity: 0;
+                transform: rotate(360deg);
+            }
+        }
+
+        .emoji-rain {
+            position: absolute;
+            top: 0;
+            font-size: 25px;
+            animation: emojiDrop 5s linear infinite;
+        }
+
+        .emoji-rain:nth-child(1) {
+            left: 15%;
+            content: '🎈';
+            animation-delay: 0s;
+        }
+
+        .emoji-rain:nth-child(2) {
+            left: 35%;
+            content: '🎊';
+            animation-delay: 1s;
+        }
+
+        .emoji-rain:nth-child(3) {
+            left: 55%;
+            content: '🌟';
+            animation-delay: 2s;
+        }
+
+        .emoji-rain:nth-child(4) {
+            left: 75%;
+            content: '🎁';
+            animation-delay: 3s;
+        }
+
+        @keyframes emojiDrop {
+            0% {
+                top: -50px;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100vh;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating bubbles -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <!-- Confetti -->
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+
+    <!-- Emoji rain -->
+    <div class="emoji-rain">🎈</div>
+    <div class="emoji-rain">🎊</div>
+    <div class="emoji-rain">🌟</div>
+    <div class="emoji-rain">🎁</div>
+
+    <div class="main-container">
+        <div class="decoration">🎂</div>
+        <div class="decoration">🎉</div>
+        <div class="decoration">🎈</div>
+        <div class="decoration">✨</div>
+
+        <h1 class="birthday-title">Happy Birthday!</h1>
+
+        <div class="birthday-message">
+            🌟 Wishing you the most wonderful day filled with happiness and love! 🌟
+            <br><br>
+            May this special day bring you endless joy, beautiful surprises, and all the things that make you smile!
+            <br><br>
+            You deserve all the happiness in the world! 💖
+        </div>
+
+        <div class="special-wish">
+            🎁 May all your dreams come true and may this new year of your life be absolutely magical! 🎁
+        </div>
+    </div>
+</body>
+
+</html>

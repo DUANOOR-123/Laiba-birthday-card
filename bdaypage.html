@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Birthday Video</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #2D1B69, #11998E, #38EF7D, #FFE066);
+            background-size: 400% 400%;
+            animation: dreamyGradient 12s ease infinite;
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            position: relative;
+        }
+
+        @keyframes dreamyGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Animated background elements */
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        .star:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            width: 4px;
+            height: 4px;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            width: 6px;
+            height: 6px;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            width: 3px;
+            height: 3px;
+            animation-delay: 2s;
+        }
+
+        .star:nth-child(4) {
+            bottom: 15%;
+            right: 25%;
+            width: 5px;
+            height: 5px;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatParticle 8s linear infinite;
+        }
+
+        .particle:nth-child(5) {
+            left: 5%;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 192, 203, 0.7);
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(6) {
+            left: 85%;
+            width: 12px;
+            height: 12px;
+            background: rgba(173, 216, 230, 0.7);
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(7) {
+            left: 45%;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 0, 0.7);
+            animation-delay: 4s;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                bottom: -20px;
+                opacity: 0;
+                transform: rotate(0deg);
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+                transform: rotate(360deg);
+            }
+        }
+
+        .video-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            height: 70%;
+            overflow: hidden;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FFEAA7);
+            background-size: 300% 300%;
+            border-radius: 27px;
+            z-index: -1;
+            animation: borderGlow 4s ease infinite;
+        }
+
+        @keyframes borderGlow {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        iframe {
+            position: absolute;
+            top: -100px;
+            /* zoom adjust */
+            left: -100px;
+            width: calc(100% + 200px);
+            height: calc(100% + 200px);
+            border: none;
+            border-radius: 22px;
+        }
+
+        #endButton {
+            display: none;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px 35px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 700;
+            font-family: 'Pacifico', cursive;
+            border: none;
+            cursor: pointer;
+            font-size: 22px;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            animation: buttonPulse 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        #endButton:hover {
+            transform: translateX(-50%) translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.6);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        @keyframes buttonPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 15px 35px rgba(102, 126, 234, 0.8);
+            }
+        }
+
+        #endButton::before {
+            content: '✨';
+            margin-right: 10px;
+            animation: sparkleRotate 2s linear infinite;
+        }
+
+        #endButton::after {
+            content: '✨';
+            margin-left: 10px;
+            animation: sparkleRotate 2s linear infinite reverse;
+        }
+
+        @keyframes sparkleRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Welcome message */
+        .welcome-message {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Pacifico', cursive;
+            font-size: 28px;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            animation: fadeInScale 2s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) scale(0.5);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1);
+            }
+        }
+
+        /* Loading animation */
+        .loading-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+        }
+
+        .loading-ring div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 4px solid transparent;
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: loadingSpin 1.2s linear infinite;
+        }
+
+        .loading-ring div:nth-child(2) {
+            animation-delay: -0.4s;
+        }
+
+        .loading-ring div:nth-child(3) {
+            animation-delay: -0.8s;
+        }
+
+        @keyframes loadingSpin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Button entrance animation */
+        @keyframes buttonEntrance {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(50px) scale(0.5);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-10px) scale(1.1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+        }
+
+        #endButton.show {
+            display: block;
+            animation: buttonEntrance 1s ease-out forwards;
+        }
+
+        /* Celebration confetti */
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            animation: confettiDrop 3s linear infinite;
+        }
+
+        .confetti-piece:nth-child(odd) {
+            background: #FF69B4;
+        }
+
+        .confetti-piece:nth-child(3n) {
+            background: #00CED1;
+        }
+
+        .confetti-piece:nth-child(8) {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .confetti-piece:nth-child(9) {
+            left: 25%;
+            animation-delay: 0.3s;
+        }
+
+        .confetti-piece:nth-child(10) {
+            left: 40%;
+            animation-delay: 0.6s;
+        }
+
+        .confetti-piece:nth-child(11) {
+            left: 55%;
+            animation-delay: 0.9s;
+        }
+
+        .confetti-piece:nth-child(12) {
+            left: 70%;
+            animation-delay: 1.2s;
+        }
+
+        .confetti-piece:nth-child(13) {
+            left: 85%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes confettiDrop {
+            0% {
+                top: -10px;
+                opacity: 1;
+                transform: rotate(0deg);
+            }
+
+            100% {
+                top: 100vh;
+                opacity: 0;
+                transform: rotate(720deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background decorations -->
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+
+    <div class="welcome-message">
+        🎥 Special Birthday Video 🎥
+    </div>
+
+    <div class="video-container">
+        <div class="loading-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <iframe id="videoPlayer"
+            src="https://www.youtube.com/embed/kUPiDf_hRb4?start=10&end=20&autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0"
+            allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+        <button id="endButton" onclick="location.href='nextpage.html'">Continue Journey</button>
+    </div>
+
+    <script>
+        // Hide loading ring after video starts
+        setTimeout(() => {
+            const loadingRing = document.querySelector('.loading-ring');
+            if (loadingRing) {
+                loadingRing.style.display = 'none';
+            }
+        }, 2000);
+
+        // Show button after 10 seconds with smooth animation
+        setTimeout(() => {
+            const button = document.getElementById("endButton");
+            button.classList.add('show');
+        }, 10000); 
+    </script>
+</body>
+
+</html>

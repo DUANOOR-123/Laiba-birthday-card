@@ -1,0 +1,36 @@
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    /* flex container */
+    justify-content: center;
+    /* center horizontally */
+    align-items: center;
+    /* center vertically */
+}
+
+.box {
+    width: 500px;
+    height: 500px;
+    background: purple;
+    text-align: center;
+    display: flex;
+        /* flex container */
+        justify-content: center;
+        /* center horizontally */
+        align-items: center;
+        /* center vertically */
+}
+prev
+{
+    
+   margin: 0;
+
+}
+a {
+    text-decoration: none;
+    /* removes underline */
+    color: inherit;
+    /* makes link take the same color as parent */
+}
